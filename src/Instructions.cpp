@@ -40,9 +40,6 @@ void Instructions::execute() {
 		if (command == "TARGET") {
 			std::cout << "Updated target to: " << param << std::endl;
 		}
-		else if (command == "NMAP") {
-			cmd = "nmap " + param;
-		}
 		else if (command == "PING") {
 			cmd = "ping " + param;
 			system(cmd.c_str());
@@ -55,7 +52,7 @@ void Instructions::execute() {
 			cmd = "curl -I " + param;
 			system(cmd.c_str());
 		}
-		else if (command == "PORTSCAN") {
+		else if (command == "NMAP") {
 			cmd = "nmap " + param;
 			system(cmd.c_str());
 
