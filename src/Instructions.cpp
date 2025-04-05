@@ -1,4 +1,5 @@
 #include "../inc/Instructions.h"
+#include "../inc/Handlers.h"
 
 void Instructions::getInstructions() {
 	std::ifstream inputFile("./input/instructions.txt");
@@ -30,7 +31,7 @@ void Instructions::getInstructions() {
 	inputFile.close();
 }
 
-void Instructions::execute() {
+void Instructions::findDefinition() {
 	for (const auto& instruction : instructionList) {
 		std::string command = instruction.first;
 		std::string param = instruction.second;
@@ -41,39 +42,53 @@ void Instructions::execute() {
 			std::cout << "Updated target to: " << param << std::endl;
 		}
 		else if (command == "PING") {
-			cmd = "ping " + param;
-			system(cmd.c_str());
+			cmd = "ping " + param;	
+			execute(cmd);
 		}
 		else if (command == "TRACEROUTE") {
 			cmd = "tracert " + param;
-			system(cmd.c_str());
+			execute(cmd);
 		}
 		else if (command == "HTTPHEADER") {
 			cmd = "curl -I " + param;
-			system(cmd.c_str());
+			execute(cmd);
 		}
 		else if (command == "NMAP") {
 			cmd = "nmap " + param;
-			system(cmd.c_str());
-
-			if (system(cmd.c_str()) == 0) {
-				std::cout << "Port scan completed successfully." << std::endl;
-			}
-			else {
-				std::cout << "Port scan failed. Please try re-installing nmap. "  << std::endl;
-			}
+			execute(cmd);
 		}
 		else if (command == "DNSLOOKUP") {
 			cmd = "nslookup " + param;
-			system(cmd.c_str());
+			execute(cmd);
 		}
 		else if (command == "GEOIP") {
 			cmd = "curl ip-api.com/json/" + param;
-			system(cmd.c_str());
+			execute(cmd);
 		}
+		else if (command == "HALT") {
+			system("pause");
+		}
+		else if (command == "CLEAR") {
+			system("cls");
+		}
+
 		else {
 			std::cout << "Unknown instruction: " << command << std::endl;
 		}
 	}
 }
 
+void Instructions::execute(std::string cmd) {
+
+	if (system(cmd.c_str()) == 0) {
+		std::cout << "\n";
+		hdl::outputResult(1, cmd + " completed successfully.");
+	}
+	else {
+		std::cout << "\n";
+		hdl::outputResult(0, cmd + " failed to complete. Do you have the required dependencies installed?.");
+	}
+
+	std::cout << "\n--------------------------------------------------------------\n\n";
+
+}

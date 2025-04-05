@@ -4,5 +4,5 @@ int main() {
 	Instructions ins;
 
 	ins.getInstructions();
-	ins.execute();
+	ins.findDefinition();
 }

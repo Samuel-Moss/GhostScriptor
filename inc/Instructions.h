@@ -12,7 +12,9 @@ class Instructions {
 		uint16_t instructionCount;
 		std::vector <std::pair<std::string, std::string>> instructionList;
 
+		void execute(std::string cmd);
+
 	public:
 		void getInstructions();
-		void execute();
+		void findDefinition();
 };

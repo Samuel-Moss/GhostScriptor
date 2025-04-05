@@ -1,3 +1,5 @@
 TARGET nodemine.net
 PING
-PORTSCAN
+HALT
+NMAP
+HALT
