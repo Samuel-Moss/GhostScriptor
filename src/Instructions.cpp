@@ -66,10 +66,11 @@ void Instructions::findDefinition() {
 			execute(cmd);
 		}
 		else if (command == "HALT") {
-			system("pause");
+			std::cout << "Please enter a key to continue...";
+			std::cin.get();
 		}
 		else if (command == "CLEAR") {
-			system("cls");
+			std::cout << "\033[2J\033[H";
 		}
 
 		else {
