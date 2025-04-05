@@ -1,0 +1,3 @@
+TARGET nodemine.net
+PING
+PORTSCAN

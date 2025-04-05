@@ -56,7 +56,7 @@ void Instructions::execute() {
 			system(cmd.c_str());
 		}
 		else if (command == "PORTSCAN") {
-			cmd = "nmap -p " + param;
+			cmd = "nmap " + param;
 			system(cmd.c_str());
 
 			if (system(cmd.c_str()) == 0) {
