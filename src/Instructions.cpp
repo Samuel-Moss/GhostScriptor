@@ -60,7 +60,7 @@ void Instructions::execute() {
 				std::cout << "Port scan completed successfully." << std::endl;
 			}
 			else {
-				std::cout << "Port scan failed. Do you have the "  << std::endl;
+				std::cout << "Port scan failed. Please try re-installing nmap. "  << std::endl;
 			}
 		}
 		else if (command == "DNSLOOKUP") {
