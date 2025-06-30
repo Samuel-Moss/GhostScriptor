@@ -9,7 +9,7 @@
 
 class Instructions {
 	private:
-		uint16_t instructionCount;
+		uint16_t instructionCount = 0;
 		std::vector <std::pair<std::string, std::string>> instructionList;
 
 		void execute(std::string cmd);
